@@ -10,6 +10,7 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
+import frc.utils.controller.AsymmetricTrapezoidProfile.Constraints;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
@@ -52,15 +53,15 @@ public final class Constants {
     public static final double kBackRightChassisAngularOffset = Math.PI / 2;
 
     // SPARK MAX CAN IDs
-    public static final int kFrontLeftDrivingCanId = 11;
-    public static final int kRearLeftDrivingCanId = 13;
-    public static final int kFrontRightDrivingCanId = 15;
-    public static final int kRearRightDrivingCanId = 17;
+    public static final int kFrontLeftDrivingCanId = 4;
+    public static final int kRearLeftDrivingCanId = 3;
+    public static final int kFrontRightDrivingCanId = 1;
+    public static final int kRearRightDrivingCanId = 2;
 
-    public static final int kFrontLeftTurningCanId = 10;
-    public static final int kRearLeftTurningCanId = 12;
-    public static final int kFrontRightTurningCanId = 14;
-    public static final int kRearRightTurningCanId = 16;
+    public static final int kFrontLeftTurningCanId = 8;
+    public static final int kRearLeftTurningCanId = 7;
+    public static final int kFrontRightTurningCanId = 5;
+    public static final int kRearRightTurningCanId = 6;
 
     public static final boolean kGyroReversed = false;
   }
@@ -139,4 +140,41 @@ public final class Constants {
   public static final class NeoMotorConstants {
     public static final double kFreeSpeedRpm = 5676;
   }
+
+  public static final class ShoulderConstants {
+    public static final int kRightShoulderMotorCanId = 10;
+    public static final int kLeftShoulderMotorCanId = 9;
+
+    public static final double kShoulderGearRatio = 240.0;
+    public static final double kShoulderLength = Units.inchesToMeters(28);
+    public static final double kShoulderPositionConversionFactor = (2*Math.PI) * kShoulderGearRatio; //Radians * Gear ratio
+    public static final double kShoulderEncoderZeroOffset = 623.8;
+    public static final double kShoulderKinematicOffset = 105.0;
+    public static final boolean kShoulderMotorInverted = true;
+    public static final boolean kShoulderEncoderInverted = true;
+    public static final double kShoulderP = 8.0;
+    public static final int kShoulderMotorCurrentLimit = 40; //amps
+
+    public static final Constraints kFarConstraints = new Constraints(16, 28, 24);
+    public static final Constraints kCloseConstraints = new Constraints(30, 40, 30);
+  }
+
+  public static final class ElbowConstants {
+    public static final int kRightElbowMotorCanId = 11;
+
+    public static final double kElbowGearRatio = 225.0;
+    public static final double kElbowLength = Units.inchesToMeters(25);
+    public static final double kElbowPositionConversionFactor = (2*Math.PI) * kElbowGearRatio;
+    public static final double kElbowEncoderZeroOffset = 1422.0;
+    public static final double kElbowKinematicOffset = 762.0;
+    public static final boolean kElbowMotorInverted = false;
+    public static final boolean kElbowEncoderInverted = true;
+    public static final double kElbowP = 8.0;
+    public static final int kElbowMotorCurrentLimit = 30; //amps
+
+    public static final Constraints kFarConstraints = new Constraints(16, 28, 24);
+    public static final Constraints kCloseConstraints = new Constraints(30, 40, 30);
+  }
+
+
 }
