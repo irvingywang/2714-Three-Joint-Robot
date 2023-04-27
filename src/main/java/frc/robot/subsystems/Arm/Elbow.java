@@ -16,7 +16,7 @@ import frc.robot.Constants.ElbowConstants;
 import frc.utils.controller.AsymmetricProfiledPIDController;
 
 public class Elbow extends Joint {
-    private CANSparkMax ElbowMotor = new CANSparkMax(ElbowConstants.kRightElbowMotorCanId,
+    private CANSparkMax ElbowMotor = new CANSparkMax(ElbowConstants.kElbowMotorCanId,
             CANSparkMaxLowLevel.MotorType.kBrushless);
     private AbsoluteEncoder ElbowEncoder = ElbowMotor.getAbsoluteEncoder(Type.kDutyCycle);
 
@@ -47,5 +47,5 @@ public class Elbow extends Joint {
     public void periodic() {
         setCalculatedVoltage();
         SmartDashboard.putNumber("Elbow Kinematic Angle", getKinematicAngle());
-    } 
+    }
 }

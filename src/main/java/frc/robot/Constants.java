@@ -145,14 +145,14 @@ public final class Constants {
     public static final int kRightShoulderMotorCanId = 10;
     public static final int kLeftShoulderMotorCanId = 9;
 
-    public static final double kShoulderGearRatio = 240.0;
-    public static final double kShoulderLength = Units.inchesToMeters(28);
+    public static final double kShoulderGearRatio = 1.0;
+    public static final double kShoulderLength = Units.inchesToMeters(0.0);
     public static final double kShoulderPositionConversionFactor = (2*Math.PI) * kShoulderGearRatio; //Radians * Gear ratio
-    public static final double kShoulderEncoderZeroOffset = 623.8;
-    public static final double kShoulderKinematicOffset = 105.0;
+    public static final double kShoulderEncoderZeroOffset = 0.0;
+    public static final double kShoulderKinematicOffset = 0.0;
     public static final boolean kShoulderMotorInverted = true;
     public static final boolean kShoulderEncoderInverted = true;
-    public static final double kShoulderP = 8.0;
+    public static final double kShoulderP = 0.0;
     public static final int kShoulderMotorCurrentLimit = 40; //amps
 
     public static final Constraints kFarConstraints = new Constraints(16, 28, 24);
@@ -160,21 +160,45 @@ public final class Constants {
   }
 
   public static final class ElbowConstants {
-    public static final int kRightElbowMotorCanId = 11;
+    public static final int kElbowMotorCanId = 11;
 
-    public static final double kElbowGearRatio = 225.0;
-    public static final double kElbowLength = Units.inchesToMeters(25);
+    public static final double kElbowGearRatio = 1.0;
+    public static final double kElbowLength = Units.inchesToMeters(0.0);
     public static final double kElbowPositionConversionFactor = (2*Math.PI) * kElbowGearRatio;
-    public static final double kElbowEncoderZeroOffset = 1422.0;
-    public static final double kElbowKinematicOffset = 762.0;
+    public static final double kElbowEncoderZeroOffset = 0.0;
+    public static final double kElbowKinematicOffset = 0.0;
     public static final boolean kElbowMotorInverted = false;
     public static final boolean kElbowEncoderInverted = true;
-    public static final double kElbowP = 8.0;
-    public static final int kElbowMotorCurrentLimit = 30; //amps
+    public static final double kElbowP = 0.0;
+    public static final int kElbowMotorCurrentLimit = 40; //amps
 
     public static final Constraints kFarConstraints = new Constraints(16, 28, 24);
     public static final Constraints kCloseConstraints = new Constraints(30, 40, 30);
   }
 
+  public static final class WristConstants {
+    public static final int kWristMotorCanId = 13;
+
+    public static final double kWristGearRatio = 1.0;
+    public static final double kWristLength = Units.inchesToMeters(0);
+    public static final double kWristPositionConversionFactor = (2*Math.PI) * kWristGearRatio;
+    public static final double kWristEncoderZeroOffset = 0.0;
+    public static final double kWristKinematicOffset = 0.0;
+    public static final boolean kWristMotorInverted = false;
+    public static final boolean kWristEncoderInverted = false;
+    public static final double kWristP = 0.0;
+    public static final int kWristMotorCurrentLimit = 30; //amps
+
+    public static final Constraints kFarConstraints = new Constraints(16, 28, 24);
+    public static final Constraints kCloseConstraints = new Constraints(30, 40, 30);
+  }
+
+  public static final class ManipulatorConstants {
+    public static final int kManipulatorMotorCanId = 14;
+    public static final int kManipulatorMotorCurrentLimit = 12; //amps 
+
+    public static final double kIntakeMotorSpeed = 1;
+    public static final double kOuttakeMotorSpeed = -0.5;
+  }
 
 }
