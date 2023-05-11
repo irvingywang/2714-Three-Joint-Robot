@@ -8,6 +8,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -17,7 +18,7 @@ public class Manipulator extends SubsystemBase {
   private CANSparkMax manipulatorMotor = new CANSparkMax(ManipulatorConstants.kManipulatorMotorCanId, MotorType.kBrushless);
 
   private enum ManipulatorState {
-    INTAKING, OUTTAKING, STOPPED
+    INTAKING, OUTTAKING, HOLDING, STOPPED
   }
   private ManipulatorState manipulatorState = ManipulatorState.STOPPED;
   private Timer manipulatorRunningTimer = new Timer();
@@ -47,8 +48,23 @@ public class Manipulator extends SubsystemBase {
     });
   }
 
+  public Command setHold() {
+    return new InstantCommand(() -> {
+      manipulatorMotor.set(ManipulatorConstants.kHoldMotorSpeed);
+      manipulatorState = ManipulatorState.HOLDING;
+    });
+  }
+
+  public Command setStop() {
+    return new InstantCommand(() -> {
+      manipulatorMotor.set(0);
+      manipulatorState = ManipulatorState.STOPPED;
+    });
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putString("Manipulator State", manipulatorState.toString());
   }
 }

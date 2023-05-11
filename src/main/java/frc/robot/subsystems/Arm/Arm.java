@@ -4,8 +4,10 @@
 
 package frc.robot.subsystems.Arm;
 
-import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 import frc.utils.ArmPreset;
 
 /** Add your docs here. */
@@ -16,11 +18,17 @@ public class Arm {
 
     public Arm() {}
 
-    public Command setArmPreset(ArmPreset armPreset) {
-        return new InstantCommand(() -> {
-            m_shoulder.setTargetKinematicAngleRadians(armPreset.ShoulderAngleRadians);
-            m_elbow.setTargetKinematicAngleRadians(armPreset.ElbowAngleRadians);
-            m_wrist.setTargetKinematicAngleRadians(armPreset.WristAngleRadians);
-        });
+    public CommandBase toPreset(ArmPreset armPreset) {
+        CommandBase armCommand = new SequentialCommandGroup(
+            new InstantCommand(() -> {
+                m_shoulder.setTargetRadians(armPreset.ShoulderAngleRadians);
+                m_elbow.setTargetRadians(armPreset.ElbowAngleRadians);
+                m_wrist.setTargetRadians(armPreset.WristAngleRadians);
+            }),
+            new WaitUntilCommand(() -> m_shoulder.atGoal() && m_elbow.atGoal() && m_wrist.atGoal())
+        );
+        armCommand.addRequirements(m_shoulder, m_elbow, m_wrist);
+
+        return armCommand;
     }
 }

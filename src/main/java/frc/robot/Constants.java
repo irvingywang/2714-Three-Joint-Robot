@@ -10,6 +10,7 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
+import frc.utils.ArmPreset;
 import frc.utils.controller.AsymmetricTrapezoidProfile.Constraints;
 
 /**
@@ -198,7 +199,21 @@ public final class Constants {
     public static final int kManipulatorMotorCurrentLimit = 12; //amps 
 
     public static final double kIntakeMotorSpeed = 1;
+    public static final double kHoldMotorSpeed = 0.5;
     public static final double kOuttakeMotorSpeed = -0.5;
+  }
+
+  public static final class ArmConstants {
+    public static final ArmPreset kShelfPresetCone = new ArmPreset(90, 90, 90);
+    public static final ArmPreset kShelfPresetCube = new ArmPreset(90, 90, 45);
+
+    public static final ArmPreset kPortalPresetCone = new ArmPreset(90, 90, 0);
+    public static final ArmPreset kPortalPresetCube = new ArmPreset(90, 45, 0);
+
+    public static final ArmPreset kFloorPresetCone = new ArmPreset(90, 0, 90);
+    public static final ArmPreset kFloorPresetCube = new ArmPreset(90, 0, 45);
+
+    public static final ArmPreset kHoldPreset = new ArmPreset(0, 0, 0);
   }
 
 }

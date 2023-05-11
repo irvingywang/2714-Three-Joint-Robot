@@ -11,6 +11,7 @@ import com.revrobotics.CANSparkMaxLowLevel;
 import com.revrobotics.SparkMaxAbsoluteEncoder.Type;
 
 import edu.wpi.first.math.controller.ArmFeedforward;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.ShoulderConstants;
 import frc.utils.controller.AsymmetricProfiledPIDController;
@@ -51,6 +52,7 @@ public class Shoulder extends Joint {
         @Override
         public void periodic() {
                 setCalculatedVoltage();
-                SmartDashboard.putNumber("Shoulder Kinematic Angle", getKinematicAngle());
+                SmartDashboard.putNumber("Shoulder Angle", getAngleRadians());
+                SmartDashboard.putNumber("Shoulder Target", Units.radiansToDegrees(getTargetRadians()));
         }
 }

@@ -39,11 +39,11 @@ public class Joint extends SubsystemBase {
     this.KinematicOffset = KinematicOffset;
   }
 
-  public double getKinematicAngle() {
+  public double getAngleRadians() {
     return (JointEncoder.getPosition() - KinematicOffset) / JointGearRatio;
   }
 
-  public void setTargetKinematicAngleRadians(double targetAngleRadians) {
+  public void setTargetRadians(double targetAngleRadians) {
     JointController.setGoal(new State(targetAngleRadians, 0));
   }
 
@@ -51,12 +51,16 @@ public class Joint extends SubsystemBase {
     JointController.setConstraints(constraints);
   }
 
+  public double getTargetRadians() {
+    return JointController.getGoal().position;
+  }
+
   public boolean atGoal() {
     return JointController.atGoal();
   }
 
   public void setCalculatedVoltage() {
-    JointMotor.setVoltage(JointController.calculate(getKinematicAngle())
+    JointMotor.setVoltage(JointController.calculate(getAngleRadians())
         + JointFeedForward.calculate(JointController.getSetpoint().position, 0));
   }
 }

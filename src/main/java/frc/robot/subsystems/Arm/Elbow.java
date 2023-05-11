@@ -11,6 +11,7 @@ import com.revrobotics.CANSparkMaxLowLevel;
 import com.revrobotics.SparkMaxAbsoluteEncoder.Type;
 
 import edu.wpi.first.math.controller.ArmFeedforward;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.ElbowConstants;
 import frc.utils.controller.AsymmetricProfiledPIDController;
@@ -46,6 +47,7 @@ public class Elbow extends Joint {
     @Override
     public void periodic() {
         setCalculatedVoltage();
-        SmartDashboard.putNumber("Elbow Kinematic Angle", getKinematicAngle());
+        SmartDashboard.putNumber("Elbow Angle", getAngleRadians());
+        SmartDashboard.putNumber("Elbow Target", Units.radiansToDegrees(getTargetRadians()));
     }
 }
