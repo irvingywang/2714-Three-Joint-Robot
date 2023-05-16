@@ -17,4 +17,8 @@ public class ArmPreset {
       this.ElbowAngleRadians = Units.degreesToRadians(ElbowAngleDegrees);
       this.WristAngleRadians = Units.degreesToRadians(WristAngleRadians);
     }
+
+    public ArmPreset getInverse() {
+      return new ArmPreset(-ShoulderAngleRadians, -ElbowAngleRadians, -WristAngleRadians);
+    }
 }

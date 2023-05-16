@@ -204,14 +204,25 @@ public final class Constants {
   }
 
   public static final class ArmConstants {
-    public static final ArmPreset kShelfPresetCone = new ArmPreset(90, 90, 90);
-    public static final ArmPreset kShelfPresetCube = new ArmPreset(90, 90, 45);
+    //Intake
+    public static final ArmPreset kForwardShelfCone = new ArmPreset(90, 90, 90);
+    public static final ArmPreset kForwardShelfCube = new ArmPreset(90, 90, 45);
 
-    public static final ArmPreset kPortalPresetCone = new ArmPreset(90, 90, 0);
-    public static final ArmPreset kPortalPresetCube = new ArmPreset(90, 45, 0);
+    public static final ArmPreset kForwardPortalCone = new ArmPreset(90, 90, 0);
+    public static final ArmPreset kForwardPortalCube = new ArmPreset(90, 45, 0);
 
-    public static final ArmPreset kFloorPresetCone = new ArmPreset(90, 0, 90);
-    public static final ArmPreset kFloorPresetCube = new ArmPreset(90, 0, 45);
+    public static final ArmPreset kForwardFloorCone = new ArmPreset(90, 0, 90);
+    public static final ArmPreset kForwardFloorCube = new ArmPreset(90, 0, 45);
+
+    //Score
+    public static final ArmPreset kForwardHighCone = new ArmPreset(30, 30, 30);
+    public static final ArmPreset kForwardHighCube = new ArmPreset(30, 30, 45);
+
+    public static final ArmPreset kForwardMiddleCone = new ArmPreset(30, 90, 0);
+    public static final ArmPreset kForwardMiddleCube = new ArmPreset(30, 45, 0);
+
+    public static final ArmPreset kForwardLowCone = new ArmPreset(30, 0, 90);
+    public static final ArmPreset kForwardLowCube = new ArmPreset(30, 0, 45);
 
     public static final ArmPreset kHoldPreset = new ArmPreset(0, 0, 0);
   }
