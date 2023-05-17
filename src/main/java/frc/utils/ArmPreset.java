@@ -19,6 +19,9 @@ public class ArmPreset {
     }
 
     public ArmPreset getInverse() {
-      return new ArmPreset(-ShoulderAngleRadians, -ElbowAngleRadians, -WristAngleRadians);
+      return new ArmPreset(
+        Units.radiansToDegrees(-ShoulderAngleRadians), 
+        Units.radiansToDegrees(-ElbowAngleRadians),
+        Units.radiansToDegrees(-WristAngleRadians));
     }
 }
